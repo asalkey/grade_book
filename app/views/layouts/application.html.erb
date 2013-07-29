@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GradeTracker</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="container">
+    <h1> <%= link_to "Grade Tracker" , courses_path %> </h1>
+    <% flash.each do |key, value| %>
+      <%= value %>
+    <% end %>
+  <%= yield %>
+  </div>
+
+</body>
+</html>
