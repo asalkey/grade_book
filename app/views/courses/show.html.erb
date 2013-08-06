@@ -1,3 +1,7 @@
+<% content_for :add do %>
+  <div class="add pull-right">  <%= link_to "+ Add Assignment" , new_course_assignment_path(@course) %> </div>
+<% end %>
+
 <h1> Assignments for <%= @course.title %> </h1>
 
 <table class="table table-striped">
@@ -5,9 +9,8 @@
     <th> Assignment Name </th>
     <th> Assignment Grade </th>
     <th> Edit </th>
-    <th> Destroy </th>
+    <th> Delete </th>
   </tr>
-  <%= link_to "Add assignment" , new_course_assignment_path(@course) %>
   <% @course.assignments.each do |x| %>
     <tr>
       <td><%= x.name %> </td>
@@ -17,3 +20,12 @@
     </tr>
   <% end %>
 </table>
+ <h3>Your average grade:</h3>
+  <%= total= @course.assignments.size * 100.0
+      grade= @course.assignments.sum(:grade)
+      average = grade/total * 100
+
+      average.round
+  %>
+
+

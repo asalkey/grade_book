@@ -3,3 +3,52 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'bootstrap';
+
+body{
+  background:#FAFAFA;
+}
+
+table{
+  border:thick solid #EEEEEE;
+  background:white;
+}
+
+header {
+  background:#2B7FC3;
+  border-top:5px solid #1F5884;
+    h1 a {
+      color:#fff;
+    }
+}
+
+.btn, .btn-primary{
+  background-image:none;
+  box-shadow:none;
+  border-radius:0px !important;
+  border:none;
+}
+
+.btn-group > .btn + .dropdown-toggle{
+  box-shadow:none;
+}
+
+nav {
+  margin-top:14px;
+}
+
+nav .add{
+  background:#005CB0;
+  padding:4px;
+  margin-right:4px;
+  a{
+    color:white;
+  }
+}
+
+.dropdown-toggle{
+  border-left:thin solid #fff;
+}
+
+.container.content{
+  margin-top:20px;
+}

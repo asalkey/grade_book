@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130729171509) do
+ActiveRecord::Schema.define(:version => 20130806212807) do
 
   create_table "assignments", :force => true do |t|
     t.string   "name"
-    t.string   "grade"
+    t.integer  "grade",      :limit => 255
     t.integer  "course_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   create_table "courses", :force => true do |t|

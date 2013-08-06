@@ -1,5 +1,6 @@
-<%= link_to "New Course", new_course_path %>
-
+<% content_for :add do %>
+  <div class="add pull-right">  <%= link_to "+ New Course", new_course_path %> </div>
+<% end %>
 
 <table class="table table-striped">
   <tr>

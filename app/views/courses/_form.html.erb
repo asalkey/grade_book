@@ -1,4 +1,5 @@
 <%= form_for (@course) do |x| %>
+  <%= x.error_messages %>
   <%= x.label :title %>
   <%= x.text_field :title %>
   <%= x.submit %>

@@ -2,6 +2,7 @@
   <%= x.label :name %>
   <%= x.text_field :name %>
   <%= x.label :grade %>
-  <%= x.text_field :grade %>
+  <%= x.select :grade, options_for_select((0..100).to_a.map{|s| ["#{s}%", s]}) %>
+  <br/>
   <%= x.submit %>
 <% end %>

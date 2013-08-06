@@ -7,7 +7,7 @@ gem 'rails', '3.2.12'
 
 gem 'sqlite3'
 gem 'bootstrap-sass'
-
+gem 'dynamic_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -25,8 +25,15 @@ gem 'jquery-rails'
 
 group :test, :development do
   gem 'rspec-rails'
+  gem 'pry'
+  gem "factory_girl_rails", "~> 4.0"
+end
+
+group :test do
   gem 'capybara'
 end
+
+
 
 
 # To use ActiveModel has_secure_password
