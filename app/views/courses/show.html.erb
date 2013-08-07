@@ -1,5 +1,5 @@
-<% content_for :add do %>
-  <div class="add pull-right">  <%= link_to "+ Add Assignment" , new_course_assignment_path(@course) %> </div>
+<% content_for :add_new do %>
+  <div class="add pull-right">  <%= link_to "+ Add Assignment" , new_user_course_assignment_path(current_user,@course) %> </div>
 <% end %>
 
 <h1> Assignments for <%= @course.title %> </h1>
@@ -15,17 +15,19 @@
     <tr>
       <td><%= x.name %> </td>
       <td><%= x.grade %> </td>
-      <td><%= link_to "Edit" , edit_course_assignment_path(x.course_id,x.id) %> </td>
-      <td><%= link_to "Delete" , course_assignment_path(x.course_id,x.id) , :method => :delete, :confirm => "Are you sure you want to delete this assignment?"  %>
+      <td><%= link_to "Edit" , edit_user_course_assignment_path(current_user,x.course_id,x.id) %> </td>
+      <td><%= link_to "Delete" , user_course_assignment_path(current_user,x.course_id,x.id) , :method => :delete, :confirm => "Are you sure you want to delete this assignment?"  %>
     </tr>
   <% end %>
 </table>
  <h3>Your average grade:</h3>
-  <%= total= @course.assignments.size * 100.0
-      grade= @course.assignments.sum(:grade)
+  <% if !@course.assignments.empty? %>
+  <%= total = @course.assignments.size * 100.0
+      grade = @course.assignments.sum(:grade)
       average = grade/total * 100
-
       average.round
   %>
+  <% else %>
+  <% end %>
 
 

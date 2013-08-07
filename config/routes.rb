@@ -1,9 +1,16 @@
 GradeTracker::Application.routes.draw do
+  devise_for :users
 
-  root :to => 'courses#index'
+  root :to => 'home#index'
 
-  resources :courses do
-    resources :assignments
+  devise_for :users do
+    get '/users/sign_out' => 'devise/sessions#destroy'
+  end
+
+  resources :users do
+    resources :courses do
+      resources :assignments
+    end
   end
 
   # The priority is based upon order of creation:

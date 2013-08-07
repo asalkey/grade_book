@@ -1,0 +1,5 @@
+<% if user_signed_in? %>
+<h1> View your <%= link_to "Courses" , user_courses_path(current_user)%>
+<% else %>
+<h1> Keep track of your grades and assignments with Grade Book <%= link_to "Sign up", new_user_registration_path %> </h1>
+<% end %>

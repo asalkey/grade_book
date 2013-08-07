@@ -1,7 +1,9 @@
 class CoursesController < ApplicationController
+  before_filter :authenticate_user!
+  before_filter :find_user
 
   def index
-    @courses = Course.all
+    @courses = current_user.courses
   end
 
   def new
@@ -10,6 +12,7 @@ class CoursesController < ApplicationController
 
   def create
     @course = Course.new(params[:course])
+    @course.user = current_user
 
     if @course.save
       flash[:notice] = "Course has been created."
@@ -29,7 +32,7 @@ class CoursesController < ApplicationController
 
     if @course.update_attributes(params[:course])
       flash[:notice] = "Course has been updated."
-      redirect_to course_assignments_path
+      redirect_to user_course_assignments_path
     else
       flash[:alert] = "Course has not been updated"
       render :action => 'edit'
@@ -39,4 +42,9 @@ class CoursesController < ApplicationController
   def show
     @course = Course.find(params[:id])
   end
+
+  private
+    def find_user
+      @user = current_user
+    end
 end

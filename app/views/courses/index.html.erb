@@ -1,14 +1,24 @@
-<% content_for :add do %>
-  <div class="add pull-right">  <%= link_to "+ New Course", new_course_path %> </div>
+<% content_for :add_new do %>
+  <div class="add pull-right">  <%= link_to "+ New Course", new_user_course_path %> </div>
 <% end %>
-
 <table class="table table-striped">
   <tr>
     <th> Courses </th>
+    <th> Total Grade </th>
   </tr>
-  <% @courses.each do |x| %>
+  <% @courses.each do |course| %>
   <tr>
-    <th> <%= link_to x.title , course_path(x) %> </th>
+    <th> <%= link_to course.title , user_course_path(current_user,course) %> </th>
+    <th> <% if !course.assignments.empty? %>
+         <%= total = course.assignments.size * 100.0
+             grade = course.assignments.sum(:grade)
+             average = grade/total * 100
+             average.round
+          %>
+          <% else %>
+             No assignments entered
+          <% end %>
+    </th>
   </tr>
   <% end %>
 </table>
